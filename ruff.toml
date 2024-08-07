@@ -1,0 +1,3 @@
+[lint.extend-per-file-ignores]
+# Skip unused variable rules (`F841`).
+"__init__.py" = ["F841", "F401"]
