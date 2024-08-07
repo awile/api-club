@@ -5,17 +5,8 @@ services:
     command: "fastapi dev --host 0.0.0.0"
     volumes:
       - ./app:/code/app
+      - ./data:/code/data
     ports:
       - "8000:8000"
-
-  db:
-    container_name: db
-    image: postgres:16.3
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: api
+      DB_FILE_PATH: /data/api.db
