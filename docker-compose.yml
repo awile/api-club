@@ -4,6 +4,13 @@ services:
     image: api
     ports:
       - "8000:8000"
+    environment:
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: db
+      DB_NAME: api
+    networks:
+      - api
 
   db:
     container_name: db
@@ -15,4 +22,10 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+      POSTGRES_DB: api
+    networks:
+      - api
+
+networks:
+  api:
+    driver: bridge
