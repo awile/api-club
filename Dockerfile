@@ -8,4 +8,6 @@ WORKDIR /code
 
 COPY ./app /code/app
 
+COPY ./alembic.ini /code/alembic.ini
+
 CMD ["fastapi", "run", "app/main.py"]
