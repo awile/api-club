@@ -1,9 +1,11 @@
 FROM python:3.12.2
 
-COPY ./app /app
+WORKDIR /code
 
-COPY ./requirements.txt /app/requirements.txt
+COPY ./app /code/app
 
-RUN pip install --no-cache-dir -r /app/requirements.txt
+COPY ./requirements.txt /code/app/requirements.txt
+
+RUN pip install --no-cache-dir -r /code/app/requirements.txt
 
 CMD ["fastapi", "run", "app/main.py"]
