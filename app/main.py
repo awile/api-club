@@ -2,8 +2,11 @@ from fastapi import FastAPI, Depends, Request
 from app.db import get_db_session
 
 from sqlalchemy import text
+from app.routers.task_router import task_router
 
 app = FastAPI()
+
+app.include_router(task_router)
 
 
 @app.middleware("http")
