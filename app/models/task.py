@@ -1,5 +1,5 @@
-import uuid
 from datetime import datetime
+from pydantic import BaseModel
 
 from app.models.base import Base
 from sqlalchemy import Integer, DateTime, String
@@ -15,3 +15,7 @@ class Task(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime, server_default=func.now(), nullable=False
     )
+
+
+class TaskCreate(BaseModel):
+    name: str
