@@ -1,0 +1,23 @@
+services:
+  api_server:
+    container_name: api_server
+    image: api
+    volumes:
+      - ./data:/code/data
+    environment:
+      DB_FILE_PATH: /data/api.db
+    networks:
+      - api
+
+  nginx:
+    container_name: nginx
+    image: nginx_app
+    ports:
+      - "443:443"
+      - "80:80"
+    networks:
+      - api
+
+networks:
+  api:
+    driver: bridge

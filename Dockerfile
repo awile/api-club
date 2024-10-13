@@ -10,4 +10,6 @@ COPY ./app /code/app
 
 COPY ./alembic.ini /code/alembic.ini
 
-CMD ["fastapi", "run", "app/main.py"]
+COPY ./start-server.sh /code/start-server.sh
+
+CMD ["./start-server.sh"]
